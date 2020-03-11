@@ -2,16 +2,32 @@ from tkinter import *
 import os
 import random
 import time
-def addsquare(x, y):
+from tkinter import Tk, Canvas, Frame, BOTH
+def addsquare(x, y, color):
     x = x+128
     y = y+128
-    canvas.create_rectangle(x,y,x+8,y+8)
+    canvas.create_rectangle(x,y,x+8,y+8,fill = color)
     root.update()
 
-
 root = Tk()
-size = 1024
-canvas = Canvas(root, width = size, height = size)
+root.geometry("1024x1024")
+size = 769
+canvas = Canvas(root, width = 1280, height = 1280)
+# canvas.place(anchor = NE)
 canvas.pack()
-x = 0
+img = PhotoImage(file = "Unknown1.png")
+canvas.create_image(511, 510,image = img,anchor = CENTER)
 y = 0
+x = 0
+while (x < 769):
+    color = random.choice(['red', 'blue'])
+    addsquare(x,y,color)
+    x+=12
+    if x == 768:
+        x = 0
+        y += 12
+    if y == 768:
+        time.sleep(3000)
+        break
+root.mainloop()
+
