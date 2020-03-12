@@ -20,7 +20,7 @@ class champion:
     point = self.x * 64 + self.y * 64 + steps
     new_coords = recost(point)
     self.x = new_coords[0]
-    self.xy = new_coords[1]
+    self.y = new_coords[1]
   def info(self):
     print(self.x, " ",self.y)
     print(self.num)
