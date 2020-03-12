@@ -3,6 +3,7 @@ import os
 import random
 import time
 from tkinter import Tk, Canvas, Frame, BOTH
+lifes = 4096
 class champion:
   x = 0
   y = 0
@@ -25,6 +26,8 @@ class champion:
     print(self.num)
     print(self.color)
   def fill(self):
+    global lifes
+    lifes-=1
     addsquare(self.x,self.y,color = self.color)
 def choosecolor(num):
   color = []
