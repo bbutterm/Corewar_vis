@@ -20,7 +20,7 @@ class champion:
     point = self.x * 64 + self.y * 64 + steps
     new_coords = recost(point)
     self.x = new_coords[0]
-    self.y = new_coords[1]
+    self.xy = new_coords[1]
   def info(self):
     print(self.x, " ",self.y)
     print(self.num)
@@ -28,7 +28,16 @@ class champion:
   def fill(self):
     global lifes
     lifes-=1
-    addsquare(self.x,self.y,color = self.color)
+    #addsquare(self.x,self.y,color = self.color)
+def initchamps(count):
+  count = count-1
+  champs = []
+  while (count >= 0):
+    champs.append(champion(count))
+    count-=1
+  print(len(champs), "champs has been initialized:)")
+  champs.reverse()
+  return champs
 def choosecolor(num):
   color = []
   if num == 0:
@@ -47,6 +56,11 @@ def recost(coords):
   ret.append(x)
   ret.append(y)
   return ret
+champs = initchamps(4)
+champs[0].info()
+champs[1].info()
+champs[2].info()
+champs[3].info()
 def addsquare(x, y, color):
     x = x+128
     y = y+128
