@@ -7,16 +7,31 @@ class champion:
   x = 0
   y = 0
   num = 0
+  color = []
   def __init__(self,num):
     self.num = num
     coords = num*1024
     s = recost(coords)
     self.x = s[0]
     self.y = s[1]
+    self.color = choosecolor(num)
   def info(self):
     print(self.x, " ",self.y)
     print(self.num)
-   
+    print(self.color)
+  def fill(self):
+    addsquare(self.x,self.y,color = self.color)
+def choosecolor(num):
+  color = []
+  if num == 0:
+    color.append('red')
+  elif num == 1:
+    color.append('blue')
+  elif num == 2:
+    color.append('green')
+  else:
+    color.append('yellow')
+  return color
 def recost(coords):
   ret = []
   x = coords%64
