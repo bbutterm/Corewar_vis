@@ -4,14 +4,16 @@ import random
 import time
 from tkinter import Tk, Canvas, Frame, BOTH
 lifes = 4096
+count = 4
 class champion:
   x = 0
   y = 0
   num = 0
   color = []
   def __init__(self,num):
+    global count
     self.num = num
-    coords = num*1024
+    coords = num*(4096/count)
     s = recost(coords)
     self.x = s[0]
     self.y = s[1]
@@ -51,12 +53,12 @@ def choosecolor(num):
   return color
 def recost(coords):
   ret = []
-  x = coords%64
+  x = round(coords%64)
   y = round(coords/64)
   ret.append(x)
   ret.append(y)
   return ret
-champs = initchamps(4)
+champs = initchamps(count)
 champs[0].info()
 champs[1].info()
 champs[2].info()
