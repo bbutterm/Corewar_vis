@@ -7,21 +7,23 @@ class champion:
   x = 0
   y = 0
   num = 0
-  def __init__(self,num,coords):
+  def __init__(self,num):
     self.num = num
+    coords = num*1024
     s = recost(coords)
     self.x = s[0]
     self.y = s[1]
   def info(self):
     print(self.x, " ",self.y)
     print(self.num)
+   
 def recost(coords):
-    ret = []
-    x = coords//64
-    y = round(coords/64)
-    ret.append(x)
-    ret.append(y)
-    return ret
+  ret = []
+  x = coords%64
+  y = round(coords/64)
+  ret.append(x)
+  ret.append(y)
+  return ret
 def addsquare(x, y, color):
     x = x+128
     y = y+128
