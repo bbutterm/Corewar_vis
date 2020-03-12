@@ -3,6 +3,18 @@ import os
 import random
 import time
 from tkinter import Tk, Canvas, Frame, BOTH
+class champion:
+  x = 0
+  y = 0
+  num = 0
+  def __init__(self,num,coords):
+    self.num = num
+    s = recost(coords)
+    self.x = s[0]
+    self.y = s[1]
+  def info(self):
+    print(self.x, " ",self.y)
+    print(self.num)
 def recost(coords):
     ret = []
     x = coords//64
