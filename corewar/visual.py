@@ -3,6 +3,13 @@ import os
 import random
 import time
 from tkinter import Tk, Canvas, Frame, BOTH
+def recost(coords):
+    ret = []
+    x = coords//64
+    y = round(coords/64)
+    ret.append(x)
+    ret.append(y)
+    return ret
 def addsquare(x, y, color):
     x = x+128
     y = y+128
