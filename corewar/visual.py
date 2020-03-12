@@ -18,8 +18,8 @@ class champion:
   def move(self,steps):
     point = self.x * 64 + self.y * 64 + steps
     new_coords = recost(point)
-    x = new_coords[0]
-    y = new_coords[1]
+    self.x = new_coords[0]
+    self.y = new_coords[1]
   def info(self):
     print(self.x, " ",self.y)
     print(self.num)
