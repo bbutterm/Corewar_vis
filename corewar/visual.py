@@ -10,6 +10,7 @@ class champion:
   x = 0
   y = 0
   num = 0
+  karet = []
   color = []
   def __init__(self,num):
     global count
@@ -19,14 +20,41 @@ class champion:
     self.x = s[0]
     self.y = s[1]
     self.color = choosecolor(num)
+    self.create_karet()
+  def create_karet(self):
+    self.karet.append(karetka(self))
+    """
   def move(self,steps):
     new_coords = recost(steps)
     self.x = new_coords[0]
     self.y = new_coords[1]
+    """
   def info(self):
     print(self.x, " ",self.y)
     print(self.num)
     print(self.color)
+  def fill(self):
+    global lifes
+    lifes-=1
+    addsquare(self.x,self.y,color = self.color)
+class karetka():
+  parent = 0
+  x = 0
+  y = 0
+  color = []
+  def __init__(self,champion):
+    self.parent = champion.num
+    self.x = champion.x
+    self.y = champion.y
+    self.color = champion.color
+  def info(self):
+    print(self.x, " ",self.y)
+    print(self.parent)
+    print(self.color)
+  def move(self,steps):
+    new_coords = recost(steps)
+    self.x = new_coords[0]
+    self.y = new_coords[1]
   def fill(self):
     global lifes
     lifes-=1
@@ -56,10 +84,6 @@ def recost(coords):
     x = coords%64*12
     y = coords//64*12
     print(round(4065 // 64))
-#    if (x != 0):
-#        x -= 1
-#    if (y != 0):
-#       y -= 1
     ret.append(x)
     ret.append(y)
     return ret
@@ -68,6 +92,9 @@ def addsquare(x, y, color):
     y = y+128
     canvas.create_rectangle(x,y,x+8,y+8,fill = color)
     root.update()
+#a = champion(0)
+a = champion(1)
+a.karet[0].info()
 
 root = Tk()
 root.geometry("1024x1024")
